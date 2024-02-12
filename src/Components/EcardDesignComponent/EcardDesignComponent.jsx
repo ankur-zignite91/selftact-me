@@ -38,7 +38,7 @@ const EcardDesignComponent = () => {
       console.log(query.get('username'));
       getUserDetails(query.get('username'));
     } else {
-      window.location.replace("https://selftact.com/");
+      // window.location.replace("https://selftact.com/");
     }
   }, [query]);
 

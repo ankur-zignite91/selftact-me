@@ -11,8 +11,8 @@ const ApplicationRoute = () => {
 };
 
 const Redirect = () => {
-  window.location.replace("https://selftact.com/");
-  return <div></div>;
+  // window.location.replace("https://selftact.com/");
+  return <div>NOT FOUND</div>;
 };
 
 export default ApplicationRoute;

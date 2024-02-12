@@ -1,10 +1,10 @@
 import "./App.css";
-import ApplicationRoute from "./config/ApplicationRoute";
+import EcardDesignComponent from "./Components/EcardDesignComponent/EcardDesignComponent";
 
 function App() {
   return (
     <div>
-      <ApplicationRoute />
+      <EcardDesignComponent />
     </div>
   );
 }

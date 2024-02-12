@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Grid from "@mui/material/Grid";
@@ -6,11 +6,13 @@ import Container from "@mui/material/Container";
 import "./EcardDesignComponent.css";
 
 const EcardDesignComponent = () => {
-  const location = useLocation();
-  const { pathname } = location;
-
-  const [username, setUsername] = useState("");
   const [userDetails, setUserDetails] = useState({});
+
+  function useQuery() {
+    const { search } = useLocation();
+    return useMemo(() => new URLSearchParams(search), [search]);
+  }
+  let query = useQuery();
 
   const getUserDetails = (name) => {
     let config = {
@@ -32,12 +34,13 @@ const EcardDesignComponent = () => {
   };
 
   useEffect(() => {
-    if (pathname?.length > 0) {
-      console.log(pathname);
-      setUsername(pathname.slice(3, pathname.length));
-      getUserDetails(pathname.slice(3, pathname.length));
+    if (query.get('username')) {
+      console.log(query.get('username'));
+      getUserDetails(query.get('username'));
+    } else {
+      window.location.replace("https://selftact.com/");
     }
-  }, []);
+  }, [query]);
 
   return (
     <Container>
